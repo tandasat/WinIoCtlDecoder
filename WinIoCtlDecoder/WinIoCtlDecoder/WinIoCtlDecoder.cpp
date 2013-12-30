@@ -135,10 +135,10 @@ int idaapi plugin_callback(
     {
     case hxe_right_click:
         {
-            // If the current item is non zero const, then add the menu item
+            // If the current item is non zero number, then add the menu item
             auto window = va_arg(va, vdui_t*);
-            if (window->item.is_citem()
-             && window->item.e->is_non_zero_const())
+            const auto number_obj = window->get_number();
+            if (number_obj && number_obj->_value)
             {
                 add_custom_viewer_popup_item(
                     window->ct,
