@@ -11,11 +11,11 @@ Usage:
     1. Select an interesting IOCTL code in the disassemble window.
     2. Hit Ctrl-Alt-D or select Edit/Plugins/Windows IOCTL code decoder
     or
-    Call decode function directly from the Python CLI window.
-        Python>decode(0x220086)
+    Call winio_decode function directly from the Python CLI window.
+        Python>winio_decode(0x220086)
 
 Example:
-    Python>decode(0x220086)
+    Python>winio_decode(0x220086)
     Code = 0x00220086
     Device   : FILE_DEVICE_UNKNOWN (0x22)
     Function : 0x21
@@ -28,7 +28,7 @@ import idc
 import idaapi
 
 
-def decode(ioctl_code):
+def winio_decode(ioctl_code):
     """Decodes IOCTL code and print it."""
     access_names = [
         'FILE_ANY_ACCESS',
@@ -145,11 +145,11 @@ class WinIoCtlPlugin(idaapi.plugin_t):
     def init(self):
         return idaapi.PLUGIN_OK
 
-    def run(self, arg=0):
+    def run(self, _=0):
         if idc.GetOpType(idc.ScreenEA(), 1) != 5:   # Immediate
             return
         value = idc.GetOperandValue(idc.ScreenEA(), 1)
-        decode(value)
+        winio_decode(value)
 
     def term(self):
         pass
@@ -162,7 +162,7 @@ def PLUGIN_ENTRY():
 def main():
     if len(sys.argv) != 2:
         return
-    decode(int(sys.argv[1], 16))
+    winio_decode(int(sys.argv[1], 16))
 
 
 if __name__ == '__main__':

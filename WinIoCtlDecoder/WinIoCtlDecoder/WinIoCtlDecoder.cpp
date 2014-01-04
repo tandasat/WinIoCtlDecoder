@@ -51,7 +51,7 @@ int idaapi plugin_callback(
 bool idaapi plugin_on_decode_code(
     void *ud);
 
-void decode(
+void winio_decode(
     uint32 ioctl_code);
 
 
@@ -94,6 +94,7 @@ int idaapi plugin_init()
 
     if (!install_hexrays_callback(plugin_callback, nullptr))
     {
+        term_hexrays_plugin();
         return PLUGIN_SKIP;
     }
 
@@ -171,13 +172,13 @@ bool idaapi plugin_on_decode_code(
     {
         return true;
     }
-    decode(static_cast<uint32>(number_obj->_value));
+    winio_decode(static_cast<uint32>(number_obj->_value));
     return true;
 }
 
 
 // Decodes IOCTL code and prints it.
-void decode(
+void winio_decode(
     uint32 ioctl_code)
 {
     const char* ACCESS_NAMES[] =
