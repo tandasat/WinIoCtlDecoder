@@ -8,8 +8,9 @@ Installation
 -----------------
 Copy all files in a /plugins directory to a (IDA)/plugins directory. Files should be located like this:
 
-    C:\Program Files (x86)\IDA 6.5\plugins\WinIoCtlDecoder.py
+    C:\Program Files (x86)\IDA 6.x\plugins\WinIoCtlDecoder.py
                                           \WinIoCtlDecoder.plw
+                                          \WinIoCtlDecoder.p64
 
 Usage
 -----------------
@@ -21,7 +22,7 @@ You also can call 'winio_decode' function directly from the Python CLI window, a
 The result will be printed in the Outout window.
 
     Python>winio_decode(0x220086)
-    Code = 0x00220086
+    winio_decode(0x00220086)
     Device   : FILE_DEVICE_UNKNOWN (0x22)
     Function : 0x21
     Method   : METHOD_OUT_DIRECT (2)
@@ -30,7 +31,8 @@ The result will be printed in the Outout window.
 Note
 -----------------
 - WinIoCtlDecoder.py is a plugin for IDA Pro.
-- WinIoCtlDecoder.plw is a plugin for Hex-rays Decompiler.
+- WinIoCtlDecoder.plw is a plugin for Hex-rays x86 Decompiler.
+- WinIoCtlDecoder.p64 is a plugin for Hex-rays x64 Decompiler.
 
 Supported Platforms
 -----------------

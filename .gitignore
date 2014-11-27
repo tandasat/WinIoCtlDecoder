@@ -1,0 +1,10 @@
+*.opensdf
+*.log
+*.sdf
+*.suo
+*.user
+ipch
+Debug
+Debug_IDA64
+Release
+Release_IDA64

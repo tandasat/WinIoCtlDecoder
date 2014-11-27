@@ -285,7 +285,7 @@ void winio_decode(
         device_name = DEVICE_NAMES[device];
     }
 
-    msg("Code = 0x%08X\n", ioctl_code);
+    msg("winio_decode(0x%08X)\n", ioctl_code);
     msg("Device   : %s (0x%X)\n", device_name, device);
     msg("Function : 0x%X\n", function);
     msg("Method   : %s (%d)\n", METHOD_NAMES[method], method);

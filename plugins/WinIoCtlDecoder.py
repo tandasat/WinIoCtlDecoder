@@ -16,7 +16,7 @@ Usage:
 
 Example:
     Python>winio_decode(0x220086)
-    Code = 0x00220086
+    winio_decode(0x00220086)
     Device   : FILE_DEVICE_UNKNOWN (0x22)
     Function : 0x21
     Method   : METHOD_OUT_DIRECT (2)
@@ -125,7 +125,7 @@ def winio_decode(ioctl_code):
         device_name = device_name_unknown
     else:
         device_name = device_names[device]
-    print 'Code = 0x%08X' % (ioctl_code)
+    print 'winio_decode(0x%08X)' % (ioctl_code)
     print 'Device   : %s (0x%X)' % (device_name, device)
     print 'Function : 0x%X' % (function)
     print 'Method   : %s (%d)' % (method_names[method], method)
@@ -148,7 +148,7 @@ class WinIoCtlPlugin(idaapi.plugin_t):
     def run(self, _=0):
         if idc.GetOpType(idc.ScreenEA(), 1) != 5:   # Immediate
             return
-        value = idc.GetOperandValue(idc.ScreenEA(), 1)
+        value = idc.GetOperandValue(idc.ScreenEA(), 1) & 0xffffffff
         winio_decode(value)
 
     def term(self):
