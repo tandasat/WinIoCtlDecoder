@@ -1,12 +1,14 @@
 WinIoCtlDecoder
 ===============
 
-An IDA Pro plugin which decodes a Windows Device I/O control code into DeviceType, FunctionCode, AccessType and MethodType.
+An IDA Pro plugin which decodes a Windows Device I/O control code into
+DeviceType, FunctionCode, AccessType and MethodType.
 
 
 Installation
 -----------------
-Copy the Python file in a /plugins directory to a (IDA)/plugins directory. It should be located like this:
+Copy the Python file in a /plugins directory to a (IDA)/plugins directory. It
+should be located like this:
 
     C:\Program Files (x86)\IDA 6.x\plugins\WinIoCtlDecoder.py
 
@@ -32,8 +34,10 @@ Supported Platforms
 - IDA Pro Standard version 6 and later.
 
 Hex-rays Decompiler plugins are not included and supported any more since the
-author no longer has the license. Please refer to a v1.1 for the last version of 
-the decompiler plugins.
+author no longer has the license. Please refer to the v1.1 release for the last
+version of the decompiler plugins.
+
+    https://github.com/tandasat/WinIoCtlDecoder/releases/tag/v1.1
 
 License
 -----------------
