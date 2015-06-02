@@ -115,6 +115,9 @@ def winio_decode(ioctl_code):
         'FILE_DEVICE_BIOMETRIC',            # 0x00000044
         'FILE_DEVICE_PMI',                  # 0x00000045
     ]
+    device_names2 = [
+        {'name': 'MOUNTMGRCONTROLTYPE', 'code': 0x0000006d},
+    ]
 
     device = (ioctl_code >> 16) & 0xffff
     access = (ioctl_code >> 14) & 3
@@ -123,6 +126,10 @@ def winio_decode(ioctl_code):
 
     if device >= len(device_names):
         device_name = device_name_unknown
+        for dev in device_names2:
+            if device == dev['code']:
+                device_name = dev['name']
+                break
     else:
         device_name = device_names[device]
     print 'winio_decode(0x%08X)' % (ioctl_code)
@@ -136,11 +143,11 @@ def winio_decode(ioctl_code):
 class WinIoCtlPlugin(idaapi.plugin_t):
     """Class for IDA Pro plugin."""
     flags = idaapi.PLUGIN_UNL
-    comment = ("Decodes Windows Device I/O control code into " +
-               "DeviceType, FunctionCode, AccessType and MethodType.")
-    help = ""
-    wanted_name = "Windows IOCTL code decoder"
-    wanted_hotkey = "Ctrl-Alt-D"
+    comment = ('Decodes Windows Device I/O control code into ' +
+               'DeviceType, FunctionCode, AccessType and MethodType.')
+    help = ''
+    wanted_name = 'Windows IOCTL code decoder'
+    wanted_hotkey = 'Ctrl-Alt-D'
 
     def init(self):
         return idaapi.PLUGIN_OK
