@@ -1,23 +1,21 @@
 WinIoCtlDecoder
 ===============
 
-IDA Pro and Hex-rays Decompiler plugins which decode a Windows Device I/O control code into DeviceType, FunctionCode, AccessType and MethodType.
+An IDA Pro plugin which decodes a Windows Device I/O control code into DeviceType, FunctionCode, AccessType and MethodType.
 
 
 Installation
 -----------------
-Copy all files in a /plugins directory to a (IDA)/plugins directory. Files should be located like this:
+Copy the Python file in a /plugins directory to a (IDA)/plugins directory. It should be located like this:
 
     C:\Program Files (x86)\IDA 6.x\plugins\WinIoCtlDecoder.py
-                                          \WinIoCtlDecoder.plw
-                                          \WinIoCtlDecoder.p64
 
 Usage
 -----------------
 1. Select an interesting IOCTL code in the disassemble window.
 2. Hit Ctrl-Alt-D or select Edit/Plugins/Windows IOCTL code decoder
 
-You also can call 'winio_decode' function directly from the Python CLI window, and when you are using Hex-rays Decompiler, you will see 'Decode as an IOCTL code' menu in a context-menu of a Pseudo window.
+You also can call 'winio_decode' function directly from the Python CLI window.
 
 The result will be printed in the Outout window.
 
@@ -28,17 +26,14 @@ The result will be printed in the Outout window.
     Method   : METHOD_OUT_DIRECT (2)
     Access   : FILE_ANY_ACCESS (0)
 
-Note
------------------
-- WinIoCtlDecoder.py is a plugin for IDA Pro.
-- WinIoCtlDecoder.plw is a plugin for Hex-rays x86 Decompiler.
-- WinIoCtlDecoder.p64 is a plugin for Hex-rays x64 Decompiler.
-
 Supported Platforms
 -----------------
 - Windows
 - IDA Pro Standard version 6 and later.
-- Hex-rays Decompiler version 1.8 and later.
+
+Hex-rays Decompiler plugins are not included and supported any more since the
+author no longer has the license. Please refer to a v1.1 for the last version of 
+the decompiler plugins.
 
 License
 -----------------
