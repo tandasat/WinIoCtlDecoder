@@ -132,11 +132,11 @@ def winio_decode(ioctl_code):
                 break
     else:
         device_name = device_names[device]
-    print 'winio_decode(0x%08X)' % (ioctl_code)
-    print 'Device   : %s (0x%X)' % (device_name, device)
-    print 'Function : 0x%X' % (function)
-    print 'Method   : %s (%d)' % (method_names[method], method)
-    print 'Access   : %s (%d)' % (access_names[access], access)
+    print('winio_decode(0x%08X)' % (ioctl_code))
+    print('Device   : %s (0x%X)' % (device_name, device))
+    print('Function : 0x%X' % (function))
+    print('Method   : %s (%d)' % (method_names[method], method))
+    print('Access   : %s (%d)' % (access_names[access], access))
     return
 
 
@@ -153,9 +153,9 @@ class WinIoCtlPlugin(idaapi.plugin_t):
         return idaapi.PLUGIN_OK
 
     def run(self, _=0):
-        if idc.GetOpType(idc.ScreenEA(), 1) != 5:   # Immediate
+        if idc.get_operand_type(idc.get_screen_ea(), 1) != 5:   # Immediate
             return
-        value = idc.GetOperandValue(idc.ScreenEA(), 1) & 0xffffffff
+        value = idc.get_operand_value(idc.get_screen_ea(), 1) & 0xffffffff
         winio_decode(value)
 
     def term(self):
