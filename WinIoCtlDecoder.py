@@ -9,7 +9,7 @@ Description:
 
 Usage:
     1. Select an interesting IOCTL code in the disassemble window.
-    2. Hit Ctrl-Alt-D or select Edit/Plugins/Windows IOCTL code decoder
+    2. Hit Ctrl+Alt+D or select Edit/Plugins/Windows IOCTL code decoder
     or
     Call winio_decode function directly from the Python CLI window.
         Python>winio_decode(0x220086)
