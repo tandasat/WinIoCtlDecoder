@@ -132,12 +132,11 @@ def winio_decode(ioctl_code):
                 break
     else:
         device_name = device_names[device]
-    print("winio_decode(0x%08X)" % (ioctl_code))
-    print("Device   : %s (0x%X)" % (device_name, device))
-    print("Function : 0x%X" % (function))
-    print("Method   : %s (%d)" % (method_names[method], method))
-    print("Access   : %s (%d)" % (access_names[access], access))
-    return
+    print(f"winio_decode(0x{ioctl_code:08X})")
+    print(f"Device   : {device_name} ({device:X})")
+    print(f"Function : 0x{function:X}")
+    print(f"Method   : {method_names[method]} ({method})")
+    print(f"Access   : {access_names[access]} ({access})")
 
 
 class WinIoCtlPlugin(idaapi.plugin_t):
